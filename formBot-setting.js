@@ -11,26 +11,25 @@ const help = document.getElementById('phone-help');
 const help2 = document.getElementById('phone-help-2');
 
 
-
 // form-main
 
 
 nameInput.addEventListener('input', () => {
-    if (nameInput.value.length < 1 ) {
+    if (nameInput.value.length < 1) {
         nameInput.classList.add('error');
         nameInput.classList.remove('success');
-    }else {
+    } else {
         nameInput.classList.remove('error');
         nameInput.classList.add('success');
     }
 });
 
 phoneInput.addEventListener('input', () => {
-    if (phoneInput.value.length > 16 ) {
+    if (phoneInput.value.length > 16) {
         phoneInput.classList.add('success');
         help.classList.add('success')
         phoneInput.classList.remove('error');
-    }else {
+    } else {
         phoneInput.classList.remove('success');
         help.classList.remove('success');
         phoneInput.classList.add('error');
@@ -173,7 +172,7 @@ MainForm.addEventListener('submit', (e) => {
         phoneInput.focus();
     }
 
-    if(raw.length === 10) {
+    if (raw.length === 10) {
         fetch('https://api.telegram.org/bot' + telegram_bot_token + '/sendMessage', {
             method: 'POST',
             headers: {
@@ -195,19 +194,15 @@ MainForm.addEventListener('submit', (e) => {
 });
 
 
-
-
-
 // contact-form
 
 
-
 phoneInput2.addEventListener('input', () => {
-    if (phoneInput2.value.length > 16 ) {
+    if (phoneInput2.value.length > 16) {
         phoneInput2.classList.add('success');
         help2.classList.add('success')
         phoneInput2.classList.remove('error');
-    }else {
+    } else {
         phoneInput2.classList.remove('success');
         help2.classList.remove('success');
         phoneInput2.classList.add('error');
@@ -352,19 +347,22 @@ ContactForm.addEventListener('submit', (e) => {
         phoneInput2.focus();
     }
 
-    if(raw.length === 10) {
+    if (raw.length === 10) {
         fetch('https://api.telegram.org/bot' + telegram_bot_token + '/sendMessage', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            chat_id: telegram_chat_id,
-            text: "Номер телефона:_" + ContactForm.querySelector('input[name=rphone]').value
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: telegram_chat_id,
+                text: "Номер телефона:_" + ContactForm.querySelector('input[name=rphone]').value
 
+            })
         })
-    })
-        .catch(error => console.error('Error sending message:', error));
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => console.error('Error sending message:', error));
         alert('Ваша заявка успешно отправлена!')
     }
 
