@@ -184,9 +184,12 @@ MainForm.addEventListener('submit', (e) => {
                     + "Номер телефона:_" + MainForm.querySelector('input[name=rphone]').value
                     + "Сообщение:_" + MainForm.querySelector('textarea[name=rtext]').value
             })
+        })  .then(response => {
+            console.log(response)
         })
             .catch(error => console.error('Error sending message:', error));
         alert('Ваша заявка успешно отправлена!')
+        e.preventDefault();
     }
 
     phoneInput.classList.remove('error'); // Снимаем класс ошибки
@@ -364,6 +367,7 @@ ContactForm.addEventListener('submit', (e) => {
             })
             .catch(error => console.error('Error sending message:', error));
         alert('Ваша заявка успешно отправлена!')
+        e.preventDefault();
     }
 
     phoneInput2.classList.remove('error'); // Снимаем класс ошибки
