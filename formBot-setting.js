@@ -190,6 +190,7 @@ MainForm.addEventListener('submit', (e) => {
             .catch(error => console.error('Error sending message:', error));
         alert('Ваша заявка успешно отправлена!')
         e.preventDefault();
+        MainForm.reset();
     }
 
     phoneInput.classList.remove('error'); // Снимаем класс ошибки
@@ -368,11 +369,14 @@ ContactForm.addEventListener('submit', (e) => {
             .catch(error => console.error('Error sending message:', error));
         alert('Ваша заявка успешно отправлена!')
         e.preventDefault();
+        ContactForm.reset();
     }
 
     phoneInput2.classList.remove('error'); // Снимаем класс ошибки
 
 });
+
+
 
 
 

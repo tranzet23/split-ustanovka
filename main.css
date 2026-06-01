@@ -1402,3 +1402,7 @@ a.button {
 .price-block-btn a {
     color: #fff;
 }
+
+.price-block-btn a {
+ display: block;
+}
